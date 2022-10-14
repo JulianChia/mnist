@@ -1,11 +1,36 @@
 #!/usr/bin/env python3
+#
+# mnist.py
+#
+#     https://github.com/JulianChia/mnist
+#
+# Copyright (C) 2022 Julian Chia
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in
+# all copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+# SOFTWARE.
+
+__all__ = ['load_MNIST']
 
 from pathlib import Path
 import gzip
 from urllib.request import build_opener, install_opener, urlretrieve
 import numpy as np
 from dataklasses import dataklass
-
 
 @dataklass
 class MNISTimages:
@@ -23,9 +48,11 @@ class MNISTlabels:
     labels: np.array
 
 
-def load_MNIST(path=None, normalise=False, flatten=False, onehot=False):
+def load_MNIST(path=None, normalise=True, flatten=True, onehot=True):
     """Function to download and extract MNIST train_images, train_labels,
-    test_images and test_labels.
+    test_images and test_labels into dataklass objections for deep learning.
+
+    dataklass from https://github.com/dabeaz/dataklasses
 
     Args:
      path - str: MNIST datasets directory. Default to current directory/MNIST.
@@ -33,7 +60,7 @@ def load_MNIST(path=None, normalise=False, flatten=False, onehot=False):
      normalise - boolean: yes -> pixel RGB values [0,255] divided by 255.
                           no  -> pixel RGB values [0,255].
      flatten   - boolean: yes -> pixels of each image stored as 1D numpy array.
-                          no  -> pixels of each image stored as 3D numpy array.
+                          no  -> pixels of each image stored as 2D numpy array.
      onehot    - boolean: yes -> labels stored as one-hot encoded numpy array.
                           no  -> labels values used.
 
