@@ -1,3 +1,5 @@
 /MNIST/
+/.idea/
+/__pycache__/
 /Pipfile
 /Pipfile.lock
