@@ -32,6 +32,7 @@ from urllib.request import build_opener, install_opener, urlretrieve
 import numpy as np
 from dataklasses import dataklass
 
+
 @dataklass
 class MNISTimages:
     magic_number: int
@@ -54,11 +55,11 @@ def load_MNIST(path=None, normalise=True, flatten=True, onehot=True):
 
     dataklass from https://github.com/dabeaz/dataklasses
 
-    Args:
+    Kwargs:
      path - str: MNIST datasets directory. Default to current directory/MNIST.
                  Create if nonexistant. Download any missing MNIST files.
-     normalise - boolean: yes -> pixel RGB values [0,255] divided by 255.
-                          no  -> pixel RGB values [0,255].
+     normalise - boolean: yes -> pixels RGB values [0,255] divided by 255.
+                          no  -> pixels RGB values [0,255].
      flatten   - boolean: yes -> pixels of each image stored as 1D numpy array.
                           no  -> pixels of each image stored as 2D numpy array.
      onehot    - boolean: yes -> labels stored as one-hot encoded numpy array.
@@ -72,22 +73,22 @@ def load_MNIST(path=None, normalise=True, flatten=True, onehot=True):
                                  ncols=28, pixels=np.array())
                      if normalise, pixels dtype='float32'
                      else,         pixels dtype='uint8'
-                     if flatten,   pixels.shape = (60000, 784)
-                     else,         pixels.shape = (60000, 28, 28)
+                     if flatten,   pixels.shape=(60000, 784)
+                     else,         pixels.shape=(60000, 28, 28)
       train_labels = MNISTlabels(magic_number=2049, nlabels=60000,
                                  labels=np.array() dtype='uint8')
-                     if onehot,    labels.shape = (60000, 10)
-                     else,         labels.shape = (60000,)
+                     if onehot,    labels.shape=(60000, 10)
+                     else,         labels.shape=(60000,)
       test_images = MNISTimages(magic_number=2051, nimages=10000, nrows=28,
                                 ncols=28, pixels=np.array())
                     if normalise,  pixels dtype='float32'
                     else,          pixels dtype='uint8'
-                    if flatten,    pixels.shape = (10000, 784)
-                    else,          pixels.shape = (10000, 28, 28)
+                    if flatten,    pixels.shape=(10000, 784)
+                    else,          pixels.shape=(10000, 28, 28)
       test_labels = MNISTlabels(magic_number=2049, nlabels=10000,
                                 labels=np.array() dtype='uint8')
-                    if onehot,     labels.shape = (10000, 10)
-                    else,          labels.shape = (10000,)
+                    if onehot,     labels.shape=(10000, 10)
+                    else,          labels.shape=(10000,)
     """
     def _set_MNIST_dir(file_parent_path):
         if not file_parent_path:  # Set dir to current directory / MNIST
