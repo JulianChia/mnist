@@ -69,25 +69,25 @@ def load_MNIST(path=None, normalise=True, flatten=True, onehot=True):
       'test': {'images': test_images, 'labels': test_labels}}
      where,
       train_images = MNISTimages(magic_number=2051, nimages=60000, nrows=28,
-                                ncols=28, pixels=np.array())
-                     if normalise, dtype='float64'
-                     else, dtype='uint8'
-                     if flatten, pixels.shape = (60000, 784)
-                     else, pixels.shape = (60000, 28, 28)
+                                 ncols=28, pixels=np.array())
+                     if normalise, pixels dtype='float32'
+                     else,         pixels dtype='uint8'
+                     if flatten,   pixels.shape = (60000, 784)
+                     else,         pixels.shape = (60000, 28, 28)
       train_labels = MNISTlabels(magic_number=2049, nlabels=60000,
                                  labels=np.array() dtype='uint8')
-                     if onehot, labels.shape = (60000, 10)
-                     else, labels.shape = (60000,)
+                     if onehot,    labels.shape = (60000, 10)
+                     else,         labels.shape = (60000,)
       test_images = MNISTimages(magic_number=2051, nimages=10000, nrows=28,
                                 ncols=28, pixels=np.array())
-                    if normalise, dtype='float64'
-                    else, dtype='uint8'
-                    if flatten, pixels.shape = (10000, 784)
-                    else, pixels.shape = (10000, 28, 28)
+                    if normalise,  pixels dtype='float32'
+                    else,          pixels dtype='uint8'
+                    if flatten,    pixels.shape = (10000, 784)
+                    else,          pixels.shape = (10000, 28, 28)
       test_labels = MNISTlabels(magic_number=2049, nlabels=10000,
                                 labels=np.array() dtype='uint8')
-                    if onehot, labels.shape = (10000, 10)
-                    else, labels.shape = (10000,)
+                    if onehot,     labels.shape = (10000, 10)
+                    else,          labels.shape = (10000,)
     """
     def _set_MNIST_dir(file_parent_path):
         if not file_parent_path:  # Set dir to current directory / MNIST
@@ -209,7 +209,10 @@ def load_MNIST(path=None, normalise=True, flatten=True, onehot=True):
 
 
 if __name__ == "__main__":
-    mnist = load_MNIST(path=None, normalise=False, flatten=True, onehot=False)
-    print(f'mnist = {mnist}')
-    print((mnist['test']['images'].pixels.shape))
-    print((mnist['test']['labels'].labels.shape))
+    # mdb = load_MNIST(path=None, normalise=False, flatten=True, onehot=False)
+    mdb = load_MNIST()
+    print(f'mdb = {mdb}')
+    print((mdb['train']['images'].pixels.shape))
+    print((mdb['train']['labels'].labels.shape))
+    print((mdb['test']['images'].pixels.shape))
+    print((mdb['test']['labels'].labels.shape))
