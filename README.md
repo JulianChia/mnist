@@ -1,4 +1,5 @@
 # mnist.py
+![Title](MNIST.png)
 This python module provides a simple to use function to download and extract the MNIST database of handwritten digits that is provided by http://yann.lecun.com/exdb/mnist/.
 
 **Function:**
