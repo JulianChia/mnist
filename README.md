@@ -53,5 +53,5 @@ _Returns a nested dictionary:_
     mdb = load_MNIST()                     # Get MNIST database using default settings
     train_images = mdb['train']['pixels']  # A 60000x784 numpy array with float32 values    
     train_labels = mdb['train']['labels']  # A 60000x10 numpy array with uint8 values
-    test_images = mdb['train']['pixels']   # A 10000x784 numpy array with float32 values    
-    test_labels = mdb['train']['labels']   # A 10000x10 numpy array with uint8 values
+    test_images = mdb['test']['pixels']   # A 10000x784 numpy array with float32 values    
+    test_labels = mdb['test']['labels']   # A 10000x10 numpy array with uint8 values
