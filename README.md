@@ -12,8 +12,8 @@ _kwarg:_
                 Create if nonexistant. Download any missing MNIST files.
     normalise - boolean: yes -> pixel RGB values [0,255] divided by 255.
                          no  -> pixel RGB values [0,255].
-    flatten   - boolean: yes -> pixels of each image stored as 1D numpy array.
-                         no  -> pixels of each image stored as 2D numpy array.
+    flatten   - boolean: yes -> pixels of all images stored as 2D numpy array.
+                         no  -> pixels of all images stored as 3D numpy array.
     onehot    - boolean: yes -> labels stored as one-hot encoded numpy array.
                          no  -> labels values used.
 
