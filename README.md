@@ -1,6 +1,6 @@
 # mnist.py
 ![Title](MNIST.png)
-This python module provides a simple to use function to download and extract the MNIST database of handwritten digits that is provided by http://yann.lecun.com/exdb/mnist/.
+This python module provides a function to download, extract and configure the MNIST database of handwritten digits that is provided by Yann LeCun that is available from https://web.archive.org/ or `Keras`. _Note: The original dataset from http://yann.lecun.com has been removed._
 
 **Function:**
 
@@ -17,41 +17,39 @@ _kwarg:_
     onehot    - boolean: yes -> labels stored as one-hot encoded numpy array.
                          no  -> labels values used.
 
-_Returns a nested dictionary:_
+_Returns:_
 
-     {'train': {'images': train_images, 'labels': train_labels},
-      'test': {'images': test_images, 'labels': test_labels}}
-     where,
-      train_images = MNISTimages(magic_number=2051, nimages=60000, nrows=28,
-                                 ncols=28, pixels=np.array())
-                     if normalise, pixels dtype='float32'
-                     else,         pixels dtype='uint8'
-                     if flatten,   pixels.shape = (60000, 784)
-                     else,         pixels.shape = (60000, 28, 28)
-      train_labels = MNISTlabels(magic_number=2049, nlabels=60000,
-                                 labels=np.array() dtype='uint8')
-                     if onehot,   labels.shape = (60000, 10)
-                     else,        labels.shape = (60000,)
-      test_images = MNISTimages(magic_number=2051, nimages=10000, nrows=28,
-                                ncols=28, pixels=np.array())
-                    if normalise, pixelsdtype='float32'
-                    else,         pixels dtype='uint8'
-                    if flatten,   pixels.shape = (10000, 784)
-                    else,         pixels.shape = (10000, 28, 28)
-      test_labels = MNISTlabels(magic_number=2049, nlabels=10000,
-                                labels=np.array() dtype='uint8')
-                    if onehot,   labels.shape = (10000, 10)
-                    else,        labels.shape = (10000,)
+    A dataklass called 'Mnist' with numpy.ndarray attributes called 
+    'train_images', 'train_labels', 'test_images' and 'test_labels'.
 
-*Remarks:*
+    If normalise, the dtype of Mnist.train_images and Mnist.test_images are
+    numpy.float64, else they will be numpy.uint8'
 
-`MNISTimages()` and `MNISTlabels()` are [dataklass objects](https://github.com/dabeaz/dataklasses). On my system, they performed ~25x faster than python3 built-in [dataclass objects](https://docs.python.org/3/library/dataclasses.html) and 5x faster than [namedtuple](https://docs.python.org/3/library/collections.html?highlight=namedtuple#collections.namedtuple). 
+    If flatten, the shape of Mnist.train_images and Mnist.test_images is
+    (60000, 784) and (10000, 784), respectively, else they will be
+    (60000, 28, 28) and (10000, 28, 28), respectively.
 
-# How to use?
+    If onehot, the shape of Mnist.train_labels and Mnist.test_labels are
+    (60000, 10) and (10000, 10), respectively, else they will be
+    (60000,) and (10000,), respectively.
 
-    from mnist import load_MNIST           # Import function from module
-    mdb = load_MNIST()                     # Get MNIST database using default settings
-    train_images = mdb['train']['pixels']  # A 60000x784 numpy array with float32 values    
-    train_labels = mdb['train']['labels']  # A 60000x10 numpy array with uint8 values
-    test_images = mdb['test']['pixels']   # A 10000x784 numpy array with float32 values    
-    test_labels = mdb['test']['labels']   # A 10000x10 numpy array with uint8 values
+## How to use?
+    # Step 1: Use either one of these import statement
+    from mnist_from_lecun import load_MNIST     # Import function from module
+    from mnist_from_keras import load_MNIST     # Import function from module
+
+    # Step 2: Run the function to get MNIST database, e.g.
+    mdb = load_MNIST()                          # Default
+
+    # Step 3: Access individual dataset like so:
+    train_images = mdb.train_images             # A 60000x784 numpy array with float64 values    
+    train_labels = mdb.train.labels             # A 60000x10 numpy array with uint8 values
+    test_images = mdb.test_images               # A 10000x784 numpy array with float64 values    
+    test_labels = mdb.test_labels               # A 10000x10 numpy array with uint8 values
+
+## Dependencies:
+1. numpy==2.2.2
+2. requests==2.32.3
+
+## Python Interpreter:
+Python 3.13
