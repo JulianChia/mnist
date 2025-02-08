@@ -34,14 +34,18 @@ _Returns:_
     (60000,) and (10000,), respectively.
 
 ## How to use?
-    # Step 1: Use either one of these import statement
+
+Step 1: Use either one of these import statements.
+
     from mnist_from_lecun import load_MNIST     # Import function from module
     from mnist_from_keras import load_MNIST     # Import function from module
 
-    # Step 2: Run the function to get MNIST database, e.g.
+Step 2: Run the function to get MNIST database, e.g.
+
     mdb = load_MNIST()                          # Default
 
-    # Step 3: Access individual dataset like so:
+Step 3: Access individual dataset like so:
+
     train_images = mdb.train_images             # A 60000x784 numpy array with float64 values    
     train_labels = mdb.train.labels             # A 60000x10 numpy array with uint8 values
     test_images = mdb.test_images               # A 10000x784 numpy array with float64 values    
