@@ -1,4 +1,8 @@
 /MNIST/
+/mnist_from_lecun/
+/mnist_from_keras/
 /icon/
 /.idea/
 /__pycache__/
+/.npz/
+/.gz/
