@@ -51,9 +51,9 @@ class Mnist:
 
 
 def set_MNIST_dir(file_parent_path: Path) -> Path:
-    if not file_parent_path:  # Set dir to current directory / MNIST
+    if not file_parent_path:  # Set dir to current directory / mnist_from_lecun
         return Path(__file__).parent.absolute() / 'mnist_from_lecun'
-    else:  # Set dir to given path / MNIST
+    else:  # Set dir to given path / mnist_from_lecun
         return Path(file_parent_path) / 'mnist_from_lecun'
 
 
@@ -144,20 +144,21 @@ def extract_labels(filepath, onehot):
 
 
 def load_MNIST(path=None, normalise=True, flatten=True, onehot=True):
-    """Function to download and extract MNIST train_images, train_labels,
-    test_images and test_labels into dataklass objections for deep learning.
+    """Function to download, extract and configure MNIST train_images,
+    train_labels, test_images and test_labels into dataklass objections for
+    deep learning.
 
     dataklass from https://github.com/dabeaz/dataklasses
 
     Kwargs:
-     path - str: MNIST datasets directory. Default to current directory/MNIST.
+     path - str: MNIST datasets directory. Default to current directory/mnist_from_lecun.
                  Create if nonexistant. Download any missing MNIST files.
-     normalise - boolean: yes -> pixels RGB values [0,255] divided by 255.
-                          no  -> pixels RGB values [0,255].
-     flatten   - boolean: yes -> pixels of all images stored as 2D numpy array.
-                          no  -> pixels of all images stored as 3D numpy array.
-     onehot    - boolean: yes -> labels stored as one-hot encoded numpy array.
-                          no  -> labels values used.
+     normalise - boolean: True  -> pixels RGB values [0,255] divided by 255.
+                          False -> pixels RGB values [0,255].
+     flatten   - boolean: True  -> pixels of all images stored as 2D numpy array.
+                          False -> pixels of all images stored as 3D numpy array.
+     onehot    - boolean: True  -> labels stored as one-hot encoded numpy array.
+                          False -> labels values used.
 
     Returns:
         A dataklass called 'Mnist' with numpy.ndarray attributes called
