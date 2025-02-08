@@ -1,6 +1,6 @@
 # mnist.py
 ![Title](MNIST.png)
-This python module provides a function to download, extract and configure the MNIST database of handwritten digits that is provided by Yann LeCun that is available from https://web.archive.org/ or `Keras`. _Note: The original dataset from http://yann.lecun.com has been removed._
+This python module provides a function to _download_, _extract_ and _configure_ the MNIST database of handwritten digits that was created by Yann LeCun _et al_ for training and testing neural-networks. _The original dataset in [http://yann.lecun.com](http://yann.lecun.com/exdb/mnist/) has been removed._ Fortunately, they can still be obtained from [https://web.archive.org/](https://web.archive.org/web/20160828233817/http://yann.lecun.com/exdb/mnist/) and [Keras](https://storage.googleapis.com/tensorflow/tf-keras-datasets/mnist.npz). 
 
 **Function:**
 
