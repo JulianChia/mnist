@@ -95,7 +95,7 @@ def onehot_encoding(labels):
     rows = labels.size
     cols = labels.max() + 1
     onehot_labels = np.zeros((rows, cols), dtype='uint8')
-    onehot_labels[np.arange(rows), labels] = 1
+    onehot_labels[:, labels] = 1
     return onehot_labels
 
 
