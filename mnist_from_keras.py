@@ -167,8 +167,8 @@ def load_MNIST(path=None, normalise=True, flatten=True, onehot=True):
 
 
 if __name__ == "__main__":
-    mdb = load_MNIST(path=None, normalise=True, flatten=True, onehot=True)  # default
-    # mdb = load_MNIST()
+    # mdb = load_MNIST(path=None, normalise=True, flatten=True, onehot=True)  # default
+    mdb = load_MNIST()
     print(f'\nmdb is a {type(mdb)}')
 
     # You access it attributes as you would a Python class.  For example, by typing
