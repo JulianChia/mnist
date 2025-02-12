@@ -120,7 +120,7 @@ def onehot_encoding(labels: np.ndarray):
     rows = labels.size
     cols = labels.max() + 1
     onehot = np.zeros((rows, cols), dtype='uint8')
-    onehot[:, labels] = 1
+    onehot[np.arange(rows), labels] = 1
     return onehot
 
 
